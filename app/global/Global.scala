@@ -31,16 +31,7 @@ object Global extends GlobalSettings {
     ElasticSearchHelper.stop()
   }
 
-  private def replaceHome(path: String): String = {
-    if (path.startsWith("~")) {
-      System.getProperty("user.home") + path.substring(1)
-    } else {
-      path
-    }
-  }
-
   val cronCommand = conf.getString("cronCommand")
-  val documentFolder = replaceHome(conf.getString("documentFolder"))
-  val documentBaseDir: File = new File(documentFolder)
+  val documentBaseDir: File = new File(conf.getString("documentFolder"))
   private val cronIntervalInSeconds: Int = conf.getInt("cronIntervalInSeconds")
 }
