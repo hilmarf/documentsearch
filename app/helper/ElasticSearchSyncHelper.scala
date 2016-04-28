@@ -78,7 +78,7 @@ object ElasticSearchSyncHelper {
               jsonBuilder()
                 .startObject()
                 .field("_name", file.getName)
-                .field("_folder", file.getParentFile.getAbsolutePath.replace(Global.documentBaseDir, ""))
+                .field("_folder", file.getParentFile.getAbsolutePath.replace(Global.documentFolder, ""))
                 .field("content", HashHelper.base64(file))
                 .endObject()
             ).setCreate(true)
